@@ -4,7 +4,7 @@ import { FormsModule } from '@angular/forms';
 @Component({
   selector: 'app-user-login',
   standalone: true,
-  imports: [FormsModule],
+  imports: [FormsModule, UserLoginComponent],
   templateUrl: './user-login.component.html',
   styleUrl: './user-login.component.css'
 })
@@ -25,7 +25,25 @@ loginObj: any = {
   constructor() {}
 
   ngOnInit(): void { 
+
   }
- 
+  onSignUp(){
+    //on sign up store the information provided by the user
+    this.signupUsers.push(this.signupObj);
+    localStorage.setItem('signUpUsers', JSON.stringify(this.signupUsers));
+    this.signupObj = {
+      username: '',
+      email: '',
+      password: ''
+    };
+
+
+  }
+  OnLogin(){
+  //for login, read data from local storage
+  //check is username or password is available then login
+const isUserExist = this.signupUsers.find(m => m.userName == this.loginObj.userName && m.password == this.loginObj.password);
+
+  }
 }
 
