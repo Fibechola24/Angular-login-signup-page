@@ -40,10 +40,15 @@ loginObj: any = {
 
   }
   OnLogin(){
+    debugger
   //for login, read data from local storage
   //check is username or password is available then login
-const isUserExist = this.signupUsers.find(m => m.userName == this.loginObj.userName && m.password == this.loginObj.password);
-
+const isUserExist = this.signupUsers.find(m => m.userName == this.loginObj.username && m.password == this.loginObj.password);
+if(isUserExist != undefined){
+alert('User login Successfully');
+}else{
+  alert('Wrong credentials');
+}
   }
 }
 
